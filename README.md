@@ -1,1 +1,3 @@
 # NoteScan
+
+Currently in progress.
