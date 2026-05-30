@@ -1,70 +1,63 @@
-# NoteScan
+# NoteScan (In Progress - BAckend Work)
 
-NoteScan is a multi-module project consisting of an Android mobile application and a Spring Boot backend. The Android app uses camera access and on-device text recognition to scan and interpret text, while the backend provides a WebSocket/STOMP server for real-time messaging support.
+NoteScan is a multi-module project with an Android client and a Spring Boot backend.
+
+## Overview
+
+- Android client built with Kotlin and AndroidX.
+- Uses ML Kit text recognition for multiple scripts and languages.
+- Backend provides a simple WebSocket STOMP endpoint for real-time messaging.
 
 ## Project structure
 
-- `app/` - Android Gradle project
-  - `app/` - Android application module
-  - `build.gradle.kts` - top-level Gradle configuration
-  - `settings.gradle.kts` - Gradle module settings
-- `backend/` - Spring Boot backend service
-  - `pom.xml` - Maven configuration
-  - `src/main/java/com/noteS/backend` - backend source code
+- `app/` — Android Gradle project
+  - `app/app/` — Android application module
+  - `app/gradle/` — version catalogs and Gradle wrapper files
+- `backend/` — Spring Boot backend service
+  - `backend/src/main/java/com/noteS/backend` — application entrypoint, WebSocket config, and messaging models
 
-## Android app
+## Key features
 
-The Android module is configured for:
-- `compileSdk = 36`
-- `minSdk = 24`
-- Kotlin support
-- Camera permission and file provider support
-- Retrofit for networking
-- Gson and Scalars converter support
-- ML Kit text recognition for multiple scripts (Latin, Chinese, Devanagari, Japanese, Korean)
-
-Key files:
-- `app/app/src/main/AndroidManifest.xml` - app permissions and provider declarations
-- `app/app/build.gradle.kts` - Android dependencies and build settings
-
-## Backend service
-
-The Spring Boot backend provides a WebSocket/STOMP endpoint for real-time messaging.
-
-Key components:
-- `backend/src/main/java/com/noteS/backend/BackendApplication.java` - Spring Boot entry point
-- `backend/src/main/java/com/noteS/backend/WebSocketConfiguration.java` - WebSocket and STOMP configuration
-- `backend/src/main/java/com/noteS/backend/GreetingController.java` - message handling controller
-
-## Requirements
-
-- Java 17
-- Android SDK 36
-- Android Studio or Gradle command line
-- Maven for backend build
+- Text recognition support for:
+  - Latin
+  - Chinese
+  - Devanagari
+  - Japanese
+  - Korean
+- Android client dependencies include Retrofit, Gson, and ML Kit text recognition libraries.
+- Backend dependencies include Spring Boot WebSocket support and Lombok.
 
 ## Build and run
 
-### Run backend
+### Android client
 
-From the `backend` directory:
+From the `app/` directory:
+
+```bash
+./gradlew assembleDebug
+```
+
+On Windows use:
+
+```bash
+gradlew.bat assembleDebug
+```
+
+### Backend service
+
+From the `backend/` directory:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-### Run Android app
-
-Open `app` in Android Studio and run the `app` module on an emulator or device.
-
-Or from the `app` root directory:
+On Windows use:
 
 ```bash
-./gradlew :app:installDebug
+mvnw.cmd spring-boot:run
 ```
 
 ## Notes
 
-- The backend is currently configured with WebSocket/STOMP endpoints.
-- The Android app requests camera and internet permissions and supports cleartext traffic in the manifest.
-- Update package names and endpoint URLs as needed for production use.
+- Android app targets SDK 36 and supports min SDK 24.
+- Backend runs on Java 17 and exposes a STOMP endpoint at `/stomp-endpoint`.

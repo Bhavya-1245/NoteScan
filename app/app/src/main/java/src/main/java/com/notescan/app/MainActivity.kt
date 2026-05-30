@@ -28,22 +28,15 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import java.io.File
-import java.io.IOError
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val pcIPAddress = "192.168.0.108"
+//    private val pcIPAddress = "192.168.0.108"
 
     private lateinit var cameraImage: ImageView
     private lateinit var captureImgBtn: Button
@@ -121,40 +114,7 @@ class MainActivity : AppCompatActivity() {
         clipboard?.setPrimaryClip(clip)
     }
 
-    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
-    private fun sendToLaptop(scannedText: String, button: Button) {
-        button.text = "Sending..."
-        button.isEnabled = false // Prevent multiple clicks
-
-        var pcIpAddress = ""
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://$pcIpAddress:8080/")
-            .addConverterFactory(GsonConverterFactory.create()) // Use Gson for ScanRequest object
-            .build()
-
-        val api = retrofit.create(NoteScanApi::class.java)
-        val request = MediaRouter2.ScanRequest(content = scannedText) // Creating our data model
-
-        api.sendScannedText(request).enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                button.isEnabled = true
-                button.text = "Copy & Send to PC"
-                if (response.isSuccessful) {
-                    Toast.makeText(this@MainActivity, "Text Copied & Sent to PC!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@MainActivity, "Server Error: ${response.code()}", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                button.isEnabled = true
-                button.text = "Retry Sync"
-                Toast.makeText(this@MainActivity, "Sync Failed! Check Server/Wi-Fi", Toast.LENGTH_LONG).show()
-                t.printStackTrace()
-            }
-        })
-    }
-
+    
     private fun recognizeText(bitmap: Bitmap) {
         val image = InputImage.fromBitmap(bitmap, 0)
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)

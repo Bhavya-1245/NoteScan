@@ -57,7 +57,7 @@ dependencies {
 // To recognize Korean script
     implementation(libs.text.recognition.korean)
 
-    implementation(libs.retrofit)
-    implementation(libs.converter.scalars.v290)
-    implementation(libs.converter.gson)
+    // implementation(libs.retrofit)
+    // implementation(libs.converter.scalars.v290)
+    // implementation(libs.converter.gson)
 }
