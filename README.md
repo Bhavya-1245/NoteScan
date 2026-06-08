@@ -1,12 +1,13 @@
-# NoteScan (In Progress - BAckend Work)
+﻿# NoteScan
 
-NoteScan is a multi-module project with an Android client and a Spring Boot backend.
+NoteScan is a completed multi-module project with an Android client and a Spring Boot backend.
 
 ## Overview
 
 - Android client built with Kotlin and AndroidX.
-- Uses ML Kit text recognition for multiple scripts and languages.
-- Backend provides a simple WebSocket STOMP endpoint for real-time messaging.
+- Uses ML Kit text recognition to capture text from camera images.
+- The app sends recognized text to a local PC backend via Retrofit.
+- Backend launches a desktop notepad GUI and pastes text received from the Android app.
 
 ## Project structure
 
@@ -14,18 +15,22 @@ NoteScan is a multi-module project with an Android client and a Spring Boot back
   - `app/app/` — Android application module
   - `app/gradle/` — version catalogs and Gradle wrapper files
 - `backend/` — Spring Boot backend service
-  - `backend/src/main/java/com/noteS/backend` — application entrypoint, WebSocket config, and messaging models
+  - `backend/src/main/java/com/noteS/backend` — Spring Boot server and REST controller
+  - `backend/src/main/java/com/noteS/dest` — desktop notepad GUI integration
 
 ## Key features
 
-- Text recognition support for:
-  - Latin
-  - Chinese
-  - Devanagari
-  - Japanese
-  - Korean
-- Android client dependencies include Retrofit, Gson, and ML Kit text recognition libraries.
-- Backend dependencies include Spring Boot WebSocket support and Lombok.
+- Android app features:
+  - capture photo using the device camera
+  - recognize text using ML Kit Latin text recognition
+  - copy recognized text to clipboard
+  - save and reuse PC IP address for backend connection
+  - send recognized text to the backend via `POST /api/v1/scan`
+  - sign out using Firebase Authentication
+- Backend features:
+  - Spring Boot 4 application using Java 17
+  - REST endpoint at `/api/v1/scan`
+  - desktop notepad GUI receives and displays text from the Android app
 
 ## Build and run
 
@@ -37,7 +42,7 @@ From the `app/` directory:
 ./gradlew assembleDebug
 ```
 
-On Windows use:
+On Windows:
 
 ```bash
 gradlew.bat assembleDebug
@@ -51,7 +56,7 @@ From the `backend/` directory:
 ./mvnw spring-boot:run
 ```
 
-On Windows use:
+On Windows:
 
 ```bash
 mvnw.cmd spring-boot:run
@@ -60,4 +65,6 @@ mvnw.cmd spring-boot:run
 ## Notes
 
 - Android app targets SDK 36 and supports min SDK 24.
-- Backend runs on Java 17 and exposes a STOMP endpoint at `/stomp-endpoint`.
+- Backend runs on Java 17.
+- The Android client sends text to the backend at `http://<pc-ip>:8080/api/v1/scan`.
+- The backend opens a desktop notepad GUI and appends received text to the notepad window.

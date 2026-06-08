@@ -13,6 +13,11 @@ activity = "1.13.0"
 constraintlayout = "2.2.1"
 retrofit = "3.0.0"
 textRecognition = "16.0.1"
+googleGmsGoogleServices = "4.4.4"
+firebaseAuth = "24.1.0"
+credentials = "1.6.0"
+credentialsPlayServicesAuth = "1.6.0"
+googleid = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,8 +38,13 @@ text-recognition-chinese = { module = "com.google.mlkit:text-recognition-chinese
 text-recognition-devanagari = { module = "com.google.mlkit:text-recognition-devanagari", version.ref = "textRecognition" }
 text-recognition-japanese = { module = "com.google.mlkit:text-recognition-japanese", version.ref = "textRecognition" }
 text-recognition-korean = { module = "com.google.mlkit:text-recognition-korean", version.ref = "textRecognition" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

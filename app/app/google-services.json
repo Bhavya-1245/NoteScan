@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1091198204628",
+    "project_id": "notescan-4af63",
+    "storage_bucket": "notescan-4af63.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091198204628:android:0cb750e23c207b7f32d941",
+        "android_client_info": {
+          "package_name": "com.notescan.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091198204628-tl6l5kn2j18jq7sbh49alg39qk04o4kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3GfbHGHSzy_0whD9_PmRyoACtFLfgCnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091198204628-tl6l5kn2j18jq7sbh49alg39qk04o4kt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091198204628:android:aa980b516bf8b7be32d941",
+        "android_client_info": {
+          "package_name": "src.main.java.com.notescan.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091198204628-tl6l5kn2j18jq7sbh49alg39qk04o4kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3GfbHGHSzy_0whD9_PmRyoACtFLfgCnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091198204628-tl6l5kn2j18jq7sbh49alg39qk04o4kt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
